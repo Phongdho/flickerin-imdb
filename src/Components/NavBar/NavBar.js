@@ -32,7 +32,6 @@ const NavBar = () => {
                     <Nav.Link className="navLink"><Link to={`/`} style={{textDecoration:"none", color:"#fff"}}>Home</Link></Nav.Link>
                     <Nav.Link className="navLink">TV shows</Nav.Link>
                     <Nav.Link className="navLink">Movies</Nav.Link>
-                    <Nav.Link className="navLink">Science</Nav.Link>
                 </Nav>
                 <Form className="d-flex">
                     <FormControl

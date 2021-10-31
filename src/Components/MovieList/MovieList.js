@@ -1,86 +1,136 @@
 import React from 'react';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import SwiperCore, { Navigation, Pagination, A11y } from "swiper";
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-const MovieSlide = ({ trending, tvShows, actionMovies, dramaMovies, animationMovies, setMovieClicked }) => {
-
-    const handleMovieClick = (element) => {
-        setMovieClicked(element);
-    };
-    return (
-        <Swiper
-        // install Swiper modules
-        modules={[Navigation, Pagination, Scrollbar, A11y]}
-        spaceBetween={10}
-        slidesPerView={5}
-        navigation
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log('slide change')}
-        >
-        {trending && trending.results.map((item) => {
-            return (
-                <SwiperSlide onClick={() => {handleMovieClick(item);}} key={item.id}>
-                    <img src={`https://image.tmdb.org/t/p/original${item?.backdrop_path}`} alt="Show Poster" className="show-poster"></img>
-                    <h5 className="show-name">{item?.title || item?.original_title || item?.name}</h5>
-                </SwiperSlide>
-            );
-        })}
-        {tvShows && tvShows.results.map((item) => {
-            return (
-                <SwiperSlide onClick={() => {handleMovieClick(item);}} key={item.id}>
-                    <img src={`https://image.tmdb.org/t/p/original${item?.backdrop_path}`} alt="Show Poster" className="show-poster"></img>
-                    <h5 className="show-name">{item?.title || item?.original_title || item?.name}</h5>
-                </SwiperSlide>
-            );
-        })}
-        {actionMovies && actionMovies.results.map((item) => {
-            return (
-                <SwiperSlide onClick={() => {handleMovieClick(item);}} key={item.id}>
-                    <img src={`https://image.tmdb.org/t/p/original${item?.backdrop_path}`} alt="Show Poster" className="show-poster"></img>
-                    <h5 className="show-name">{item?.title || item?.original_title || item?.name}</h5>
-                </SwiperSlide>
-            );
-        })};
-        {dramaMovies && dramaMovies.results.map((item) => {
-            return (
-                <SwiperSlide onClick={() => {handleMovieClick(item);}} key={item.id}>
-                    <img src={`https://image.tmdb.org/t/p/original${item?.backdrop_path}`} alt="Show Poster" className="show-poster"></img>
-                    <h5 className="show-name">{item?.title || item?.original_title || item?.name}</h5>
-                </SwiperSlide>
-            );
-        })}
-        {animationMovies && animationMovies.results.map((item) => {
-            return (
-                <SwiperSlide onClick={() => {handleMovieClick(item);}} key={item.id}>
-                    <img src={`https://image.tmdb.org/t/p/original${item?.backdrop_path}`} alt="Show Poster" className="show-poster"></img>
-                    <h5 className="show-name">{item?.title || item?.original_title || item?.name}</h5>
-                </SwiperSlide>
-            );
-        })}
-    </Swiper>
-  );
-};
+import "./MovieList.css";
+import 'swiper/swiper-bundle.min.css';
+import { useHistory } from 'react-router-dom';
 
 const MovieList = ({ trending, tvShows, actionMovies, dramaMovies, animationMovies, setMovieClicked }) => {
+    const history = useHistory();
+    const handleMovieClick = (element) => {
+        setMovieClicked(element);
+        history.push(`/movie/${element.id}`);
+    };
+
     return (
         <div className="MovieList">
-            <h1 id={"trending"}>What's trending</h1>
-            <MovieSlide key={"trending"} trending={trending} setMovieClicked={setMovieClicked} />
+            <h1 id="trending" className="section-title">What's trending</h1>
+            <Swiper
+                spaceBetween={10}
+                slidesPerView={5}
+                slidesPerGroup={5}
+                loop={true}
+                loopFillGroupWithBlank={true}
+                pagination={{
+                    "clickable": true
+                  }}
+                navigation={true}
+                onSwiper={(swiper) => console.log(swiper)}
+                onSlideChange={() => console.log('slide change')}
+            >
+                {trending && trending.map((item) => {
+                    return (
+                        <SwiperSlide onClick={() => { handleMovieClick(item); }} key={item.id}>
+                            <img src={`https://image.tmdb.org/t/p/original${item?.poster_path}`} alt="Show Poster" className="show-poster"></img>
+                        </SwiperSlide>
+                    );
+                })}
+            </Swiper >
             <br />
-            <h1 id={"tv"}>TV Shows</h1>
-            <MovieSlide key={"tv"} tvShows={tvShows} setMovieClicked={setMovieClicked} />
+            <h1 id="tv" className="section-title">TV Shows</h1>
+            <Swiper
+                spaceBetween={10}
+                slidesPerView={5}
+                slidesPerGroup={5}
+                loop={true}
+                loopFillGroupWithBlank={true}
+                pagination={{
+                    "clickable": true
+                  }}
+                navigation={true}
+                onSwiper={(swiper) => console.log(swiper)}
+                onSlideChange={() => console.log('slide change')}
+            >
+                {tvShows && tvShows.map((item) => {
+                    return (
+                        <SwiperSlide onClick={() => { handleMovieClick(item); }} key={item.id}>
+                            <img src={`https:image.tmdb.org/t/p/original${item?.poster_path}`} alt="Show Poster" className="show-poster"></img>
+                        </SwiperSlide>
+                    );
+                })}
+            </Swiper >
             <br />
-            <h1 id={"actions"}>Action</h1>
-            <MovieSlide key={"actions"} actionMovies={actionMovies} setMovieClicked={setMovieClicked} />
+            <h1 id="actions" className="section-title">Action</h1>
+            <Swiper
+                spaceBetween={10}
+                slidesPerView={5}
+                slidesPerGroup={5}
+                loop={true}
+                loopFillGroupWithBlank={true}
+                pagination={{
+                    "clickable": true
+                  }}
+                navigation={true}
+                onSwiper={(swiper) => console.log(swiper)}
+                onSlideChange={() => console.log('slide change')}
+            >
+                {actionMovies && actionMovies.map((item) => {
+                    return (
+                        <SwiperSlide onClick={() => { handleMovieClick(item); }} key={item.id}>
+                            <img src={`https:image.tmdb.org/t/p/original${item?.poster_path}`} alt="Show Poster" className="show-poster"></img>
+                        </SwiperSlide>
+                    );
+                })}
+            </Swiper >
             <br />
-            <h1 id={"drama"}>Drama</h1>
-            <MovieSlide key={"drama"} dramaMovies={dramaMovies} setMovieClicked={setMovieClicked} />
+            <h1 id="drama" className="section-title">Drama</h1>
+            <Swiper
+                spaceBetween={10}
+                slidesPerView={5}
+                slidesPerGroup={5}
+                loop={true}
+                loopFillGroupWithBlank={true}
+                pagination={{
+                    "clickable": true
+                  }}
+                navigation={true}
+                onSwiper={(swiper) => console.log(swiper)}
+                onSlideChange={() => console.log('slide change')}
+            >
+                {dramaMovies && dramaMovies.map((item) => {
+                    return (
+                        <SwiperSlide onClick={() => { handleMovieClick(item); }} key={item.id}>
+                            <img src={`https:image.tmdb.org/t/p/original${item?.poster_path}`} alt="Show Poster" className="show-poster"></img>
+                        </SwiperSlide>
+                    );
+                })}
+            </Swiper >
             <br />
-            <h1 id={"animation"}>Animations</h1>
-            <MovieSlide key={"animation"} animationMovies={animationMovies} setMovieClicked={setMovieClicked} />
+            <h1 id="animation" className="section-title">Animations</h1>
+            <Swiper
+                spaceBetween={10}
+                slidesPerView={5}
+                slidesPerGroup={5}
+                loop={true}
+                loopFillGroupWithBlank={true}
+                pagination={{
+                    "clickable": true
+                  }}
+                navigation={true}
+                onSwiper={(swiper) => console.log(swiper)}
+                onSlideChange={() => console.log('slide change')}
+            >
+                {animationMovies && animationMovies.map((item) => {
+                    return (
+                        <SwiperSlide onClick={() => { handleMovieClick(item); }} key={item.id}>
+                            <img src={`https:image.tmdb.org/t/p/original${item?.poster_path}`} alt="Show Poster" className="show-poster"></img>
+                        </SwiperSlide>
+                    );
+                })}
+            </Swiper >
             <br />
         </div>
     );
 };
-
+SwiperCore.use([Navigation, Pagination, A11y]);
 export default MovieList;

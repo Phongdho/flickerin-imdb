@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Tourney:ital,wght@1,600&display=swap');
 
 .nav-bar {
-    position: fixed;
+    position: fixed !important;
     width: 100%;
     z-index: 4;
     background-image: linear-gradient(to bottom,rgba(0,0,0,.7) 10%,rgba(0,0,0,0));
 }
 .navContainer {
-    padding-left: 3rem;
-    padding-right: 3rem;
+    padding-left: 3rem !important;
+    padding-right: 3rem !important;
 }
 
 .navLink {
@@ -26,7 +26,7 @@ background-image: radial-gradient(
     #0039a6,
     transparent
 );
-font-size: 2em;
+font-size: 2em !important;
 color: #F0F8FF;
 cursor: pointer;
 text-shadow: 0 0 0.6rem #F0F8FF, 0 0 1.5rem #007FFF,

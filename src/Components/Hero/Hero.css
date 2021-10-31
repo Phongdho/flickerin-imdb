@@ -12,16 +12,16 @@ body {
 
 .mast-body {
     margin: auto 3rem 8rem 3rem;
-    border: 1px solid black;
+
 }
 
 .mast-title {
     font-family: 'Orbitron';
-    font-size: 3rem;
+    font-size: 4rem;
     text-shadow: 
       4px 4px 0px #868484, 
       7px 7px 0px rgba(0, 0, 0, 0.2);
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
 }
 
 .mast-button {
@@ -31,17 +31,29 @@ body {
 }
 
 .play-btn {
-    background-color: white;
-    color: black;
+    background-color: white !important;
+    color: black !important;
+}
+
+.play-btn:hover {
+    background-color: rgba(109,109,110,0.7) !important;
+    color: white !important;
 }
 
 .info-btn {
-    background-color: rgba(109,109,110,0.7);
-    color: white;
+    background-color: rgba(109,109,110,0.7) !important;
+    color: white !important;
+    margin-left: 1rem;
+}
+.info-btn:hover {
+    background-color: white !important;
+    color: black !important;
 }
 
 .mast-overview {
     padding-top: 3rem;
-    padding-right: 10rem;
-
+    padding-right: 20rem;
+    color: #fff;
+    font-size: 1.5vw;
+    text-shadow: 2px 2px 4px rgb(0 0 0 / 45%);
 }

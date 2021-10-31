@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+.moviePage{
+    width: 100%;
+    background-color: #141414 !important;
+    font-family: "Lato";
+}
+
+.moviePage-main{
+    padding-bottom: 50px;
+    border-bottom: 1px solid #000;
+    margin-bottom: 50px;
+    padding-top: 12vh;
+    padding-left: 3vw;
+    padding-right: 3vw;
+}
+.right{
+    padding-left: 20px;
+}
+.button__btn{
+    background-color: #0000FF;
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+.button__btn:hover{
+    background-color: #ccc;
+    color: black
+}
+.video__btn{
+    width:80vw !important;
+    height:90vh !important;
+}
+
+.youtube-container {
+    width: 100%;
+    padding: 50px auto;
+    border-bottom: 1px solid #000;
+    display: flex !important;
+    justify-content: center;
+    margin-bottom: 10vh;
+}

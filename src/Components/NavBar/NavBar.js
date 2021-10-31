@@ -1,4 +1,5 @@
 import React from 'react'; 
+import { useState } from 'react';
 import "./NavBar.css";
 import {
     Navbar,
@@ -8,9 +9,15 @@ import {
     Button,
     Nav,
 } from 'react-bootstrap';
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
+    const [searchInput, setSearchInput] = useState("");
+    const handleInput = (el) => {
+        el.preventDefault();
+        setSearchInput(el.target.value);
+    }
+
     return (
         <Navbar bg="transparent" expand="lg" variant="dark" className="nav-bar">
             <Container fluid className="navContainer">
@@ -22,19 +29,24 @@ const NavBar = () => {
                     style={{ maxHeight: '100px' }}
                     navbarScroll
                 >
-                    <Nav.Link className="navLink">Home</Nav.Link>
+                    <Nav.Link className="navLink"><Link to={`/`} style={{textDecoration:"none", color:"#fff"}}>Home</Link></Nav.Link>
                     <Nav.Link className="navLink">TV shows</Nav.Link>
                     <Nav.Link className="navLink">Movies</Nav.Link>
                     <Nav.Link className="navLink">Science</Nav.Link>
                 </Nav>
                 <Form className="d-flex">
                     <FormControl
+                    style={{backgroundColor:"#141414", border:"none", color:"lightgray"}}
                     type="search"
                     placeholder="Search"
                     className="me-2"
                     aria-label="Search"
+                    value={searchInput}
+                    onChange={handleInput}
                     />
-                    <Button variant="outline-success" >Search</Button>
+                    <Link to={`/search/${searchInput}`}>
+                    <Button variant="outline-dark" style={{color:"lightgray"}}>Search</Button>
+                    </Link>
                 </Form>
                 </Navbar.Collapse>
             </Container>

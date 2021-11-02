@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.css";
-import { Button, Image } from "react-bootstrap";
-import "./MoviePage.css";
-import Youtube from "./Youtube";
-import NavBar from "../../Components/NavBar/NavBar";
-
+import { Button, Image, Modal } from "react-bootstrap";
+import Youtube from "../../Pages/MoviePage/Youtube";
 const API_KEY = process.env.REACT_APP_API_KEY;
-
-const MoviePage = () => {
-  const { id } = useParams();
+const DetailModal = (item) => {
+  console.log("modal props", item);
+  const id = item.id;
+  const handleClose = item.handleClose;
   const [movieDetail, setMovieDetail] = useState({});
 
   useEffect(() => {
@@ -18,6 +15,7 @@ const MoviePage = () => {
         `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`
       );
       const json = await resp.json();
+      console.log("this movie", json.original_title);
       setMovieDetail(json);
     };
     fetchMovieDetail();
@@ -37,7 +35,9 @@ const MoviePage = () => {
                 />
               </div>
               <div className="col-6 right">
+                <Button onClick={handleClose}>Close</Button>
                 <h4>{movieDetail.title}</h4>
+
                 <p>
                   Genres:{" "}
                   {movieDetail.genres?.map((g) => {
@@ -78,15 +78,9 @@ const MoviePage = () => {
             </div>
           </div>
         </div>
-        <h4 style={{ textAlign: "center", marginBottom: "5vh" }}>
-          Watch Trailer
-        </h4>
-        <div className="youtube-container">
-          <Youtube movieDetail={movieDetail} />
-        </div>
       </div>
     </>
   );
 };
 
-export default MoviePage;
+export default DetailModal;

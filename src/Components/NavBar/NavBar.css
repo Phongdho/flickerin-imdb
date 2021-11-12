@@ -1,11 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Tourney:ital,wght@1,600&display=swap');
 
-.nav-bar {
+.navbar {
     position: fixed !important;
     width: 100%;
     z-index: 4;
     background-image: linear-gradient(to bottom,rgba(0,0,0,.7) 10%,rgba(0,0,0,0));
 }
+.scrolled {
+    background-color: #141414!important;
+}
+
 .navContainer {
     padding-left: 3rem !important;
     padding-right: 3rem !important;

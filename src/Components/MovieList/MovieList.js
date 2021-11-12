@@ -14,7 +14,7 @@ const MovieList = ({ trending, tvShows, actionMovies, dramaMovies, animationMovi
 
     return (
         <div className="MovieList">
-            <h1 id="trending" className="section-title">What's trending</h1>
+            <h1 id="trending" className="section-title" style={{marginTop:"2rem"}}>What's trending</h1>
             <Swiper
                 spaceBetween={10}
                 slidesPerView={5}
@@ -37,7 +37,7 @@ const MovieList = ({ trending, tvShows, actionMovies, dramaMovies, animationMovi
                 })}
             </Swiper >
             <br />
-            <h1 id="tv" className="section-title">TV Shows</h1>
+            <h1 id="tv" className="section-title">Adventure</h1>
             <Swiper
                 spaceBetween={10}
                 slidesPerView={5}
@@ -108,6 +108,7 @@ const MovieList = ({ trending, tvShows, actionMovies, dramaMovies, animationMovi
             <br />
             <h1 id="animation" className="section-title">Animations</h1>
             <Swiper
+                style={{marginBottom: "2rem"}}
                 spaceBetween={10}
                 slidesPerView={5}
                 slidesPerGroup={5}

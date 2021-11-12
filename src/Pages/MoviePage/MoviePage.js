@@ -20,8 +20,6 @@ const MoviePage = () => {
             );
             const json = await resp.json();
             setMovieDetail(json);
-
-
         };
         fetchMovieDetail();
     }, [id]);
@@ -44,7 +42,6 @@ const MoviePage = () => {
                                     return (
                                         <Button variant={"success"} className="ml-2 button__btn" key={g.key}
                                             style={{ margin: '10px 5px' }}
-
                                         >
                                             {g.name}
                                         </Button>

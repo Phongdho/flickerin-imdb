@@ -14,31 +14,36 @@ const HomePage = () => {
     const [animationMovies, setAnimationMovies] = useState([]);
     const [movieClicked, setMovieClicked] = useState([]);
 
-    useEffect(() => {
-        const getData = async () => {
-            const data1 = await fetch(urlRequest.getTrending);
-            const movieList1 = await data1.json();
-            setTrending(movieList1.results);
-
-            const data2 = await fetch(urlRequest.getTV);
-            const movieList2 = await data2.json();
-            setTvShows(movieList2.results);
-
-            const data3 = await fetch(urlRequest.getActions);
-            const movieList3 = await data3.json();
-            setActionMovies(movieList3.results);
-
-            const data4 = await fetch(urlRequest.getDrama);
-            const movieList4 = await data4.json();
-            setDramaMovies(movieList4.results);
-
-            const data5 = await fetch(urlRequest.getAnimation);
-            const movieList5 = await data5.json();
-            setAnimationMovies(movieList5.results);
-        };
-        getData();
+    useEffect( async () => {
+        const data1 = await fetch(urlRequest.getTrending);
+        const movieList1 = await data1.json();
+        setTrending(movieList1.results);
     }, []);
 
+    useEffect( async () => { 
+        const data2 = await fetch(urlRequest.getTV);
+        const movieList2 = await data2.json();
+        setTvShows(movieList2.results);
+    }, []);
+
+    useEffect( async () => { 
+        const data3 = await fetch(urlRequest.getActions);
+        const movieList3 = await data3.json();
+        setActionMovies(movieList3.results);
+    }, []);
+
+    useEffect( async () => { 
+        const data4 = await fetch(urlRequest.getDrama);
+        const movieList4 = await data4.json();
+        setDramaMovies(movieList4.results);
+    }, []);
+
+    useEffect( async () => {
+        const data5 = await fetch(urlRequest.getAnimation);
+        const movieList5 = await data5.json();
+        setAnimationMovies(movieList5.results);
+    });
+    
     return (
         <div className="HomePage">
             <NavBar />

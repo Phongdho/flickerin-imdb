@@ -17,9 +17,15 @@ const NavBar = () => {
         el.preventDefault();
         setSearchInput(el.target.value);
     }
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    window.onscroll = () => {
+        setIsScrolled(window.pageYOffset === 0 ? false : true);
+        return () => (window.onscroll = null);
+    };
 
     return (
-        <Navbar bg="transparent" expand="lg" variant="dark" className="nav-bar">
+        <Navbar expand="lg" variant="dark" className={isScrolled? "scrolled" : "navbar"}>
             <Container fluid className="navContainer">
                 <Navbar.Brand className="sign" style={{fontFamily:"Tourney"}}><span className="fast-flicker">F</span>lick<span className="flicker">er</span>in</Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />

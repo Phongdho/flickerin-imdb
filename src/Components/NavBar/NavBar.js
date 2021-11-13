@@ -36,8 +36,11 @@ const NavBar = () => {
                     navbarScroll
                 >
                     <Nav.Link className="navLink"><Link to={`/`} style={{textDecoration:"none", color:"#fff"}}>Home</Link></Nav.Link>
-                    <Nav.Link className="navLink">TV shows</Nav.Link>
-                    <Nav.Link className="navLink">Movies</Nav.Link>
+                    <Nav.Link className="navLink" href="#trending">Trending</Nav.Link>
+                    <Nav.Link className="navLink" href="#tv">Adventure</Nav.Link>
+                    <Nav.Link className="navLink" href="#actions">Action</Nav.Link>
+                    <Nav.Link className="navLink" href="#drama">Drama</Nav.Link>
+                    <Nav.Link className="navLink" href="#animation">Animations</Nav.Link>
                 </Nav>
                 <Form className="d-flex">
                     <FormControl

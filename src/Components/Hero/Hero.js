@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Hero.css";
 import urlRequest from "../../FetchApi";
+import { useHistory } from "react-router";
 
 const truncateString = (string, limit) => {
     if (string?.length > limit) {
@@ -10,9 +11,13 @@ const truncateString = (string, limit) => {
     }
 };
 
-const Hero = () => {
+const Hero = ({setMovieClicked}) => {
     const [randomMovie, setRandomMovie] = useState([]);
-
+    const history = useHistory();
+    const handleMovieClick = (element) => {
+        setMovieClicked(element);
+        history.push(`/movie/${element.id}`);
+    }
     useEffect(() => {
         const getData = async () => {
             const data = await fetch(urlRequest.getTrending);
@@ -37,8 +42,8 @@ const Hero = () => {
                     {randomMovie?.title || randomMovie?.original_title || randomMovie?.name}
                 </h2>
                 <span className="mass-button">
-                    <button className="btn play-btn">Play this title</button>
-                    <button className="btn info-btn">More Information</button>
+                    <button className="btn play-btn" onClick={() => { handleMovieClick(randomMovie); }} key={randomMovie?.id}>Play this title</button>
+                    <button className="btn info-btn" onClick={() => { handleMovieClick(randomMovie); }} key={randomMovie?.id}>More Information</button>
                 </span>
                 <h5 className="mast-overview">
                     {truncateString(randomMovie?.overview, 150)}

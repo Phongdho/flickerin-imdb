@@ -32,7 +32,7 @@ const MoviePage = () => {
                 <div className="moviePage-main">
                     <div className="row">
                         <div className="col-6">
-                            <img src={"https://image.tmdb.org/t/p/w500/" + movieDetail.poster_path} />
+                            <img src={"https://image.tmdb.org/t/p/w500/" + movieDetail.poster_path} alt="" />
                         </div>
                         <div className="col-6 right">
                             <h4>{movieDetail.title}</h4>

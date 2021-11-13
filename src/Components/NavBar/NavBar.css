@@ -29,7 +29,7 @@ background-image: radial-gradient(
     ellipse 50% 35% at 50% 50%,
     #0039a6,
     transparent
-);
+) !important;
 font-size: 2em !important;
 color: #F0F8FF;
 cursor: pointer;
